@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:background="?attr/agenda_background"><LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="24dp">
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Notificaciones" android:textSize="26sp" android:textStyle="bold" android:textColor="?attr/agenda_text"/>
+<TextView android:id="@+id/estadoAvisos" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingTop="20dp" android:paddingBottom="20dp" android:textColor="?attr/agenda_text" android:textSize="16sp"/>
+<Button android:id="@+id/permisoAvisos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Permitir notificaciones"/>
+<Button android:id="@+id/permisoExacto" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Permitir horario preciso"/>
+<Button android:id="@+id/permisoFlotante" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Permitir ventana sobre otras apps"/>
+<Switch android:id="@+id/activarFlotante" android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="56dp" android:text="Mostrar ventana con actividades de hoy"/>
+<Button android:id="@+id/volverAvisos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Volver"/>
+</LinearLayout></ScrollView>

@@ -1,0 +1,26 @@
+sequenceDiagram
+    actor U as Persona
+    participant UI as Pantalla
+    participant L as SQLite y repositorio
+    participant M as MotorSync
+    participant RPC as agenda_sync_push
+    participant PG as PostgreSQL
+    U->>UI: Guardar registro
+    UI->>L: Entidad y cambio en transacción
+    L-->>UI: Guardado local
+    M->>L: Leer salida pendiente
+    M->>RPC: Hasta 100 sobres completos
+    RPC->>PG: Bloqueo por propietario y validación
+    alt Cambio aplicable
+        PG->>PG: Entidad + estado actual + historial, misma transacción
+        RPC-->>M: APPLIED y sobre confirmado
+        M->>L: Confirmación y contador, misma transacción
+    else Rama divergente
+        PG->>PG: Conservar rama y versión aceptada
+        RPC-->>M: CONFLICT y sobre conservado
+        M->>L: Conservar recepción para resolver
+    else Dependencia no disponible
+        RPC-->>M: WAITING
+        M->>L: Mantener salida sin confirmación funcional
+    end
+    Note over M,PG: No se espera un recibo de PC

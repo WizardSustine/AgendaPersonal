@@ -1,0 +1,11 @@
+package com.example.agendapersonal.eventos;
+import java.time.*;import java.time.temporal.ChronoUnit;
+/** Calendario puro: conserva el día preferido y no deriva marzo desde el febrero truncado. */
+public final class ReglaRecurrencia {
+ public enum Unidad{DIAS,SEMANAS,MESES,ANIOS}
+ public final LocalDate inicio;public final Unidad unidad;public final int cada,dia,mes;
+ public ReglaRecurrencia(LocalDate inicio,Unidad unidad,int cada,int dia,int mes){if(cada<1||cada>10000||dia<1||dia>31||mes<1||mes>12)throw new IllegalArgumentException("Intervalo de recurrencia inválido");this.inicio=inicio;this.unidad=unidad;this.cada=cada;this.dia=dia;this.mes=mes;}
+ public LocalDate fecha(long indice){if(indice<0)throw new IllegalArgumentException("Ocurrencia negativa");long n=Math.multiplyExact(indice,cada);switch(unidad){case DIAS:return inicio.plusDays(n);case SEMANAS:return inicio.plusWeeks(n);case MESES:YearMonth m=YearMonth.from(inicio).plusMonths(n);return m.atDay(Math.min(dia,m.lengthOfMonth()));default:long anio=Math.addExact(inicio.getYear(),n);YearMonth a=YearMonth.of(Math.toIntExact(anio),mes);return a.atDay(Math.min(dia,a.lengthOfMonth()));}}
+ public long aproximar(LocalDate fecha){long n;switch(unidad){case DIAS:n=ChronoUnit.DAYS.between(inicio,fecha);break;case SEMANAS:n=ChronoUnit.WEEKS.between(inicio,fecha);break;case MESES:n=ChronoUnit.MONTHS.between(YearMonth.from(inicio),YearMonth.from(fecha));break;default:n=fecha.getYear()-inicio.getYear();}return Math.max(0,n/cada-2);}
+ public static ReglaRecurrencia desdeOcurrencia(LocalDate elegida,long indice,Unidad unidad,int cada){LocalDate origen;switch(unidad){case DIAS:origen=elegida.minusDays(Math.multiplyExact(indice,cada));break;case SEMANAS:origen=elegida.minusWeeks(Math.multiplyExact(indice,cada));break;case MESES:YearMonth m=YearMonth.from(elegida).minusMonths(Math.multiplyExact(indice,cada));origen=m.atDay(Math.min(elegida.getDayOfMonth(),m.lengthOfMonth()));break;default:YearMonth a=YearMonth.of(Math.toIntExact(elegida.getYear()-Math.multiplyExact(indice,cada)),elegida.getMonthValue());origen=a.atDay(Math.min(elegida.getDayOfMonth(),a.lengthOfMonth()));}return new ReglaRecurrencia(origen,unidad,cada,elegida.getDayOfMonth(),elegida.getMonthValue());}
+}

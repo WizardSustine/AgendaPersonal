@@ -1,0 +1,20 @@
+flowchart LR
+    personas -->|"persona_id"| direcciones
+    materias -->|"materia_id, institucion_id"| estudios
+    series_eventos -->|"serie_id"| eventos
+    personas -->|"persona_id"| eventos
+    direcciones -->|"direccion_id, cliente_id"| freelance
+    personas -->|"cliente_id"| freelance
+    clasificaciones_economia -->|"clasificacion_id"| gastos
+    clasificaciones_economia -->|"clasificacion_id"| ingresos
+    personas -->|"institucion_id"| materias
+    ambitos_emocionales -->|"ambito_id"| motivos_emocionales
+    registros_investigacion -->|"registro_investigacion_id"| observaciones_ri
+    clasificaciones_economia -->|"clasificacion_id"| pagos
+    motivos_emocionales -->|"motivo_id"| registros_emocionales
+    personas -->|"institucion_id"| salud
+    especialidades -->|"especialidad_id"| salud
+    clasificaciones_sociales -->|"clasificacion_id"| sociales
+    personas -->|"persona_id"| sociales
+    sync_changes -->|"change_id"| sync_receipts
+    personas -->|"persona_id"| trabajo

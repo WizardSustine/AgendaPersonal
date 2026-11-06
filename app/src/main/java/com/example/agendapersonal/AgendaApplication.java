@@ -1,0 +1,7 @@
+package com.example.agendapersonal;
+import android.app.Application;import android.app.Activity;import android.os.Bundle;import android.net.*;import com.example.agendapersonal.sync.CoordinadorSync;
+public class AgendaApplication extends Application {
+ @Override public void onCreate(){super.onCreate();com.example.agendapersonal.ui.Tema.aplicar(this);try{com.example.agendapersonal.respaldo.GestorRespaldo.finalizarPendiente(this);}catch(Exception e){throw new IllegalStateException("No se pudo completar la configuración de la copia restaurada",e);}com.example.agendapersonal.avisos.ProgramadorAvisos.actualizar(this);CoordinadorSync sync=CoordinadorSync.de(this);sync.programar();ConnectivityManager cm=getSystemService(ConnectivityManager.class);if(cm!=null)try{cm.registerDefaultNetworkCallback(new ConnectivityManager.NetworkCallback(){@Override public void onAvailable(Network network){sync.solicitar(false,null);}});}catch(SecurityException ignored){}
+ registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks(){public void onActivityResumed(Activity a){sync.solicitar(false,null);com.example.agendapersonal.avisos.ProgramadorAvisos.actualizar(a);}public void onActivityCreated(Activity a,Bundle b){}public void onActivityStarted(Activity a){}public void onActivityPaused(Activity a){}public void onActivityStopped(Activity a){}public void onActivitySaveInstanceState(Activity a,Bundle b){}public void onActivityDestroyed(Activity a){}});
+ }
+}

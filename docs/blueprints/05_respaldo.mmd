@@ -1,0 +1,19 @@
+sequenceDiagram
+    actor U as Persona
+    participant G as GestorRespaldo
+    participant DB as SQLite
+    participant C as CifradoRespaldo
+    participant A as Archivo externo
+    U->>G: Exportar con contraseña
+    G->>DB: Snapshot consistente
+    DB-->>G: Filas, esquema y metadatos
+    G->>C: Manifiesto y base
+    C-->>A: agendabak autenticado y cifrado
+    U->>G: Restaurar archivo
+    A->>C: Contenido y contraseña ingresada
+    C-->>G: Paquete autenticado
+    G->>G: Validar esquema, integridad y cuenta
+    G->>DB: Guardar estado anterior y restaurar en transacción
+    G->>DB: Registrar finalización pendiente durable
+    G->>G: Nueva identidad de dispositivo y sesión pausada
+    G-->>U: Volver a iniciar sesión para sincronizar

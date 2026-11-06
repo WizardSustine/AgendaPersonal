@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="?attr/agenda_background">
+ <LinearLayout android:layout_width="match_parent" android:layout_height="64dp" android:gravity="center_vertical" android:paddingHorizontal="8dp" android:background="@drawable/bg_header">
+  <ImageButton android:id="@+id/botonMenu" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_menu" android:background="?android:attr/selectableItemBackgroundBorderless" android:contentDescription="Abrir menú" android:tint="@android:color/white"/>
+  <TextView android:id="@+id/tituloPantalla" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:textSize="22sp" android:textStyle="bold" android:textColor="@android:color/white" android:paddingStart="8dp" android:paddingEnd="4dp"/>
+  <ImageButton android:id="@+id/botonBuscar" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_search" android:background="?android:attr/selectableItemBackgroundBorderless" android:contentDescription="Buscar y filtrar" android:tint="@android:color/white"/>
+  <ImageButton android:id="@+id/botonOpciones" android:layout_width="48dp" android:layout_height="48dp" android:src="@drawable/ic_more" android:background="?android:attr/selectableItemBackgroundBorderless" android:contentDescription="Más opciones" android:tint="@android:color/white"/>
+ </LinearLayout>
+ <Spinner android:id="@+id/selectorSeccion" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginHorizontal="16dp"/>
+ <Spinner android:id="@+id/filtroEstado" android:layout_width="match_parent" android:layout_height="48dp" android:layout_marginHorizontal="16dp"/>
+ <ScrollView android:id="@+id/panelFiltros" android:layout_width="match_parent" android:layout_height="wrap_content" android:maxHeight="240dp" android:visibility="gone" android:background="?attr/agenda_primary_light">
+  <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
+   <EditText android:id="@+id/busquedaRegistros" style="@style/AgendaInput" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Buscar en este módulo" android:inputType="text" android:singleLine="true"/>
+   <LinearLayout android:id="@+id/filtrosFecha" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+    <EditText android:id="@+id/filtroDesde" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:inputType="date" android:textSize="13sp"/>
+    <EditText android:id="@+id/filtroHasta" android:layout_width="0dp" android:layout_height="48dp" android:layout_weight="1" android:inputType="date" android:textSize="13sp"/>
+   </LinearLayout>
+   <LinearLayout android:id="@+id/filtrosRelacion" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+  </LinearLayout>
+ </ScrollView>
+ <TextView android:id="@+id/resumenRegistros" style="@style/AgendaSecondaryText" android:layout_width="match_parent" android:layout_height="wrap_content" android:paddingHorizontal="20dp" android:paddingVertical="8dp"/>
+ <FrameLayout android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+  <ScrollView android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true" android:clipToPadding="false" android:padding="16dp" android:paddingBottom="96dp">
+   <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+    <TextView android:id="@+id/textoVacio" style="@style/AgendaSecondaryText" android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:padding="32dp"/>
+    <LinearLayout android:id="@+id/listaRegistros" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical"/>
+   </LinearLayout>
+  </ScrollView>
+  <ImageButton android:id="@+id/botonAgregar" android:layout_width="64dp" android:layout_height="64dp" android:layout_gravity="bottom|end" android:layout_margin="24dp" android:elevation="6dp" android:background="@drawable/bg_fab" android:src="@drawable/ic_plus" android:tint="@android:color/white" android:contentDescription="Agregar registro"/>
+ </FrameLayout>
+</LinearLayout>

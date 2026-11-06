@@ -1,0 +1,10 @@
+package com.example.agendapersonal.ui;
+import android.content.Context;import android.util.AttributeSet;import android.graphics.*;import android.view.View;
+/** Presenta el mismo progreso real que los textos del inicio. Sin actividades no dibuja avance. */
+public class ProgresoCircularView extends View {
+ private final Paint p=new Paint(3);private int terminadas,total,atrasadas,paraHoy;
+ public ProgresoCircularView(Context c,AttributeSet a){super(c,a);}
+ public void datos(int terminadas,int total){this.terminadas=Math.max(0,terminadas);this.total=Math.max(0,total);setContentDescription(this.terminadas+" de "+this.total+" actividades finalizadas");invalidate();}
+ public void situacion(int atrasadas,int paraHoy){this.atrasadas=Math.max(0,atrasadas);this.paraHoy=Math.max(0,paraHoy);setContentDescription(terminadas+" de "+total+" actividades finalizadas. "+this.atrasadas+" actividades de hoy con horario vencido y "+this.paraHoy+" pendientes para hoy");invalidate();}
+ @Override protected void onDraw(Canvas c){super.onDraw(c);float s=Math.min(getWidth(),getHeight()),cx=getWidth()/2f,cy=getHeight()/2f,r=s*.43f;p.setStyle(Paint.Style.FILL);p.setColor(0xfffffbed);c.drawCircle(cx,cy,r-6,p);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(s*.065f);p.setColor(0xffe1e0d6);c.drawCircle(cx,cy,r,p);p.setStrokeCap(Paint.Cap.ROUND);if(total>0){p.setColor(Tema.color(getContext(),com.example.agendapersonal.R.attr.agenda_ring));c.drawArc(new RectF(cx-r,cy-r,cx+r,cy+r),-90,Math.min(1f,terminadas/(float)total)*360,false,p);}p.setStrokeCap(Paint.Cap.ROUND);p.setStrokeWidth(s*.028f);p.setColor(0xff302b3a);float o=s*.12f;RectF izq=new RectF(cx-o-s*.08f,cy-s*.08f,cx-o+s*.04f,cy+s*.04f),der=new RectF(cx+o-s*.04f,cy-s*.08f,cx+o+s*.08f,cy+s*.04f);c.drawArc(izq,195,150,false,p);c.drawArc(der,195,150,false,p);if(atrasadas>0)c.drawArc(new RectF(cx-s*.16f,cy+s*.12f,cx+s*.16f,cy+s*.36f),200,140,false,p);else if(paraHoy>0||total==0)c.drawLine(cx-s*.12f,cy+s*.15f,cx+s*.12f,cy+s*.15f,p);else c.drawArc(new RectF(cx-s*.16f,cy-s*.01f,cx+s*.16f,cy+s*.23f),20,140,false,p);p.setStrokeCap(Paint.Cap.BUTT);}
+}

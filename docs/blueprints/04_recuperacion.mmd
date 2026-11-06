@@ -1,0 +1,18 @@
+flowchart TD
+    Inicio[Instalación nueva o cliente que vuelve] --> Subir[Enviar cambios locales pendientes]
+    Subir --> Pagina[Leer página de agenda_sync_snapshot]
+    Pagina --> Existe{Existe entidad local?}
+    Existe -->|No| Aplicar[Aplicar estado completo y metadatos]
+    Existe -->|Sí| Igual{Contenido idéntico?}
+    Igual -->|Sí| Base[Reconocer y conservar base remota]
+    Igual -->|No| Limpia{Base conocida y copia local sin cambios ni conflicto?}
+    Limpia -->|Sí y revisión mayor| Aplicar
+    Limpia -->|No| Conflicto[Guardar versiones para decisión manual]
+    Aplicar --> FK{Relaciones disponibles?}
+    FK -->|No| Diferir[Conservar y reintentar dependencias]
+    FK -->|Sí| Base
+    Base --> Otra{Otra página?}
+    Diferir --> Otra
+    Conflicto --> Otra
+    Otra -->|Sí| Pagina
+    Otra -->|No| Fin[Actualizar resumen y limpiar sólo transporte confirmado]

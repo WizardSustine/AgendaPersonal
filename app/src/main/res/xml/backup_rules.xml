@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><full-backup-content><exclude domain="sharedpref" path="supabase_sesion.xml"/><exclude domain="sharedpref" path="agenda_identidad.xml"/><exclude domain="sharedpref" path="agenda_sync_estado.xml"/></full-backup-content>

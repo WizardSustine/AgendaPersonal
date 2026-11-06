@@ -1,0 +1,37 @@
+flowchart TB
+    subgraph Presentacion[Presentación]
+        Main[MainActivity y AgendaActivity]
+        Registro[RegistroActivity y módulos]
+        Dia[ProgresoDia y ResumenDia]
+        Tema[Tema y ActividadTematica]
+        ModeloUI[Definicion y Fuentes]
+    end
+    subgraph Persistencia[Persistencia local]
+        Repos[Repositorios tipados]
+        DB[DatabaseHelper y SQLite]
+        Series[SeriesEvento y ReglaRecurrencia]
+        Importar[ImportadorHistorico y Csv]
+    end
+    subgraph Servicios[Servicios]
+        Sync[CoordinadorSync y MotorSync]
+        LocalSync[AlmacenSync]
+        REST[SupabaseRest y SesionSegura]
+        Avisos[ProgramadorAvisos y VentanaAvisos]
+        Respaldo[GestorRespaldo y CifradoRespaldo]
+    end
+    Main --> Dia
+    Main --> ModeloUI
+    Registro --> ModeloUI
+    Tema --> Main
+    Tema --> Registro
+    ModeloUI --> Repos
+    Repos --> DB
+    Series --> DB
+    Importar --> DB
+    Sync --> LocalSync
+    LocalSync --> DB
+    Sync --> REST
+    REST --> Supabase[Supabase]
+    Avisos --> DB
+    Avisos --> Series
+    Respaldo --> DB

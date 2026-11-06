@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Agenda Personal</string>
+    <string name="inicio_frase_pendiente">Tus frases personales aparecerán aquí</string>
+    <string name="inicio_progreso">%1$d de %2$d tareas finalizadas</string>
+    <string name="inicio_resumen">Tareas pendientes: %1$d</string>
+    <string name="inicio_sin_fecha">Sin fecha</string>
+</resources>

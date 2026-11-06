@@ -1,0 +1,8 @@
+flowchart LR
+    Persona[Persona usuaria] --> Android[Agenda Personal Android]
+    Android --> OS[Servicios Android: permisos y avisos]
+    Android <--> Nube[Supabase: Auth y PostgreSQL]
+    Android <--> Copia[Archivo de respaldo cifrado]
+    Android --> CSV[CSV por módulo]
+    Historico[Paquete histórico preparado] --> Android
+    Futuro[Cliente PC futuro: no incluido] -. mismo protocolo .-> Nube

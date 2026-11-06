@@ -1,0 +1,55 @@
+# Android Studio y configuración local
+*.iml
+.idea/
+.gradle/
+local.properties
+.DS_Store
+Thumbs.db
+**/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Binarios generados y firma privada
+*.apk
+*.aab
+*.apks
+*.jks
+*.keystore
+keystore.properties
+key.properties
+signing.properties
+
+# Credenciales y sesiones locales
+.env
+.env.*
+!.env.example
+secrets.properties
+credentials.json
+supabase_sesion.xml
+agenda_identidad.xml
+agenda_sync_estado.xml
+
+# Datos personales, importaciones y copias
+*.db
+*.db-*
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.agendabak
+*.csv
+*.ods
+AgendaPersonal-historico.json
+datos_privados/
+respaldos/
+importaciones/
+exports/
+REGISTRO_TECNICO_AGENDA_PERSONAL.md
+
+# Trabajo local y dependencias de herramientas
+node_modules/
+work/
+outputs/
+*.log
+*.tmp

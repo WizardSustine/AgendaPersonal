@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="8dp">
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Repetición del evento" android:textStyle="bold"/>
+<Spinner android:id="@+id/frecuenciaEvento" android:layout_width="match_parent" android:layout_height="48dp"/>
+<EditText android:id="@+id/intervaloEvento" android:layout_width="match_parent" android:layout_height="wrap_content" android:inputType="number" android:hint="Cada N"/>
+<Spinner android:id="@+id/unidadEvento" android:layout_width="match_parent" android:layout_height="48dp"/>
+<EditText android:id="@+id/finSerieEvento" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Finalización opcional: AAAA-MM-DD" android:inputType="date"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Finalizar, cancelar o postergar afecta solo a la ocurrencia elegida. Al editar o eliminar podés elegir el alcance."/>
+</LinearLayout>

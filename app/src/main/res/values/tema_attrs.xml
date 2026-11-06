@@ -1,0 +1,28 @@
+<resources>
+<attr name="agenda_background" format="color"/>
+<attr name="agenda_surface" format="color"/>
+<attr name="agenda_primary" format="color"/>
+<attr name="agenda_primary_dark" format="color"/>
+<attr name="agenda_primary_light" format="color"/>
+<attr name="agenda_text" format="color"/>
+<attr name="agenda_text_secondary" format="color"/>
+<attr name="agenda_border" format="color"/>
+<attr name="agenda_success" format="color"/>
+<attr name="agenda_error" format="color"/>
+<attr name="agenda_warning" format="color"/>
+<attr name="agenda_info" format="color"/>
+<attr name="agenda_overlay" format="color"/>
+<attr name="agenda_transparent" format="color"/>
+<attr name="agenda_hero_text" format="color"/><attr name="agenda_ring" format="color"/>
+<attr name="agenda_button" format="color"/>
+<attr name="agenda_button_text" format="color"/>
+<attr name="agenda_button_border" format="color"/>
+<attr name="agenda_module_start" format="color"/>
+<attr name="agenda_module_end" format="color"/>
+<attr name="agenda_module_border" format="color"/>
+<attr name="agenda_module_text" format="color"/>
+<attr name="agenda_quote_text" format="color"/>
+<attr name="agenda_quote_mark" format="color"/>
+<attr name="agenda_radar_background" format="reference|color"/>
+<attr name="agenda_radar_text" format="color"/>
+</resources>
